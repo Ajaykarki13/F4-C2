@@ -1,0 +1,19 @@
+table,th,td,tr{
+    border-collapse:collapse;
+    border:1px solid;
+    width:60%;
+}
+
+.movies
+{
+    margin-left:20%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+thead{
+    background-color: gray;
+    padding:10px;
+}
+tbody{
+    background-color:beige;
+}
