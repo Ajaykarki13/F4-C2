@@ -1,10 +1,9 @@
 import React from 'react'
 import GenreFilter from './genrefilter/GenreFilter';
 import MovieList from './movielist/MovieList';
+import {useState} from 'react'
 
-function App()
-{
-    const movies = [ { title: 'The Shawshank Redemption', genre: 'Drama', year: 1994 }, 
+const movies = [ { title: 'The Shawshank Redemption', genre: 'Drama', year: 1994 }, 
     { title: 'The Godfather', genre: 'Crime', year: 1972 }, 
     { title: 'The Dark Knight', genre: 'Action', year: 2008 }, 
     { title: '12 Angry Men', genre: 'Drama', year: 1957 }, 
@@ -20,10 +19,19 @@ function App()
      { title: 'Terminator 2: Judgment Day', genre: 'Science Fiction', year: 1991 },
       { title: 'The Lion King', genre: 'Animation', year: 1994 } ];
 
+function App()
+{
+      const[genres,setGenre]=useState('all')
+
+      function filter(genres){
+     setGenre(genres)
+      }
+
+      const filterMovies = genres === 'all'?movies:movies.filter((x)=>x.genre===genres)
     return(
     <div>
-    <GenreFilter genres={["Drama", "Crime", "Action", "Fantasy", "Western", "Science Fiction", "Thriller", "War", "Animation",]} /><br/>
-    <MovieList movies={movies}/>
+    <GenreFilter filtergenre={filter} genres={["Drama", "Crime", "Action", "Fantasy", "Western", "Science Fiction", "Thriller", "War", "Animation",]} /><br/>
+    <MovieList movies={filterMovies}/>
     </div>
     )
 }
